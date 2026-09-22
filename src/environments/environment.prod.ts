@@ -1,8 +1,8 @@
 export const environment = {
-  production: false,
+  production: true,
   supabaseUrl: 'https://tu-proyecto.supabase.co',
   supabaseAnonKey: 'tu-anon-key-aqui',
   banxicoApiKey: 'tu-token-banxico-aqui',
-  paypalMode: 'sandbox', // 'sandbox' o 'production'
-  paypalClientId: 'TU_CLIENT_ID_SANDBOX_AQUI' // Obtener en developer.paypal.com
+  paypalMode: 'production',
+  paypalClientId: 'TU_CLIENT_ID_PRODUCCION_AQUI' // Obtener en developer.paypal.com
 };

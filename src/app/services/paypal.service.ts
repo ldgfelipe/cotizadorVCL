@@ -6,20 +6,36 @@ export class PayPalService {
   paypalScriptLoaded = false;
 
   constructor() {
-    // Cargar SDK de PayPal
     if (!this.paypalScriptLoaded) {
       this.loadPayPalScript();
       this.paypalScriptLoaded = true;
     }
   }
 
+  private get paypalBaseUrl(): string {
+    const mode = environment.paypalMode || 'production';
+    return mode === 'sandbox'
+      ? 'https://www.sandbox.paypal.com/api'
+      : 'https://www.paypal.com/api';
+  }
+
+  private get paypalScriptUrl(): string {
+    const mode = environment.paypalMode || 'production';
+    return mode === 'sandbox'
+      ? 'https://www.sandbox.paypal.com/javascript/v2/checkout.js'
+      : 'https://www.paypal.com/javascript/v2/checkout.js';
+  }
+
   private loadPayPalScript(): void {
     const script = document.createElement('script');
-    script.src = 'https://www.paypal.com/javascript/v2/checkout.js';
+    script.src = this.paypalScriptUrl;
     script.async = true;
     script.defer = true;
     script.onload = () => {
-      console.log('SDK de PayPal cargado');
+      console.log(`SDK de PayPal ${environment.paypalMode || 'production'} cargado`);
+    };
+    script.onerror = (err) => {
+      console.error('Error cargando SDK de PayPal:', err);
     };
     document.body.appendChild(script);
   }
@@ -31,6 +47,11 @@ export class PayPalService {
     }
 
     window.PayPal.Buttons({
+      client: {
+        // Usar client_id según modo
+        paypal: environment.paypalClientId || '',
+        sandbox: environment.paypalMode === 'sandbox' ? '' : undefined
+      },
       createOrder: (data: any, actions: any) => {
         return actions.order.create({
           purchase_units: [{
@@ -43,10 +64,9 @@ export class PayPalService {
       },
       onApprove: (data: any, actions: any) => {
         return actions.order.capture().then((capture: any) => {
-          // Llamar a Edge Function o servicio para sumar créditos
-          // TODO: Llamar a Supabase Function o endpoint
           console.log('Pago completado:', capture.id);
           alert('¡Pago exitoso! Créditos agregados.');
+          // TODO: Llamar a Edge Function para sumar créditos
         });
       },
       onError: (err: any) => {
