@@ -1,0 +1,98 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projectType": "application",
+  "schematics": {
+    "@schematics/angular/component": {
+      "standalone": true
+    },
+    "@schematics/angular/directive": {
+      "standalone": true
+    }
+  },
+  "root": "",
+  "sourceRoot": "src",
+  "parser": "@typescript-eslint/parser",
+  "prefix": "app",
+  "cli": {
+    "schematicExtensions": {}
+  },
+  "defaults": {
+    "styleExtensions": [
+      "scss",
+      "css"
+    ]
+  },
+  "project": {
+    "root": "",
+    "architect": {
+      "build": {
+        "builder": "@angular-devkit/build-angular:browser",
+        "options": {
+          "outputPath": "dist",
+          "index": "src/index.html",
+          "polyfills": [
+            "zone.js"
+          ],
+          "favicon": "src/assets/favicon.ico",
+          "browser": "src/main.ts",
+          "plugins": []
+        },
+        "configurations": {
+          "production": {
+            "budgetBudget": 0,
+            "budgetBrowser": 0,
+            "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }
+            ],
+            "outputHashing": "all",
+            "sourceMap": true,
+            "namedChunks": false,
+            "aot": true,
+            "extractLicenses": {
+              " configuration": {
+                "body": {}
+              }
+            },
+            "extractSourceMaps": false,
+            "cleanWebpackDependencies": false,
+            "runInTs": false
+          },
+          "development": {
+            "budgetBudget": 0,
+            "budgetBrowser": 0
+          }
+        }
+      },
+      "serve": {
+        "builder": "@angular-devkit/build-angular:devserver",
+        "options": {
+          "browserTarget": "contizador-venta-inmobiliaria:build:development"
+        }
+      },
+      "extract-i18n": {
+        "builder": "@angular-devkit/build-angular:extract-i18n",
+        "options": {
+          "batch": "ian"
+        }
+      },
+      "test": {
+        "builder": "@angular-devkit/build-angular:karma",
+        "options": {
+          "karmaConfig": "karma.conf.js"
+        }
+      },
+      "e2e": {
+        "builder": "@angular-devkit/build-angular:e2e",
+        "options": {
+          "protractorConfig": "protractor.conf.js",
+          "devServerTarget": "contizador-venta-inmobiliaria:build:development"
+        }
+      }
+    }
+  }
+}
