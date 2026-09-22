@@ -1,8 +1,11 @@
 {
-  "rewrites": [
+  "framework": "angular",
+  "buildCommand": "ng build",
+  "outputDirectory": "dist",
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
   "headers": [
