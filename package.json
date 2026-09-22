@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "ng": "ng",
+    "ng": "ng serve",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -19,7 +19,6 @@
     "@angular/platform-browser": "^17.0.0",
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
-    "paypal-checkout-js": "^8.1.4",
     "rxjs": "^7.8.0",
     "tslib": "^2.4.0",
     "zone.js": "~0.14.0"
