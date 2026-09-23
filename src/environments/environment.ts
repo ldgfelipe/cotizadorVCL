@@ -5,4 +5,4 @@ export const environment = {
   banxicoApiKey: 'tu-token-banxico-aqui',
   paypalMode: 'sandbox', // 'sandbox' o 'production'
   paypalClientId: 'TU_CLIENT_ID_SANDBOX_AQUI' // Obtener en developer.paypal.com
-};
+};''  
