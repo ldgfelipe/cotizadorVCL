@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_vBLQefJD7NGM8V1f8ETWxyEt65G6",
+      "name": "cotizador-vcl",
+      "directory": ".",
+      "orgId": "team_p1n44LbYyhEuossF9M3MLX29"
+    }
+  ]
+}
