@@ -1,10 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": "1",
   "newProjectRoot": "projects",
   "projectType": "application",
+  "root": "",
+  "sourceRoot": "src",
+  "prefix": "app",
+  "version": 1,
   "cli": {
-    "schematicExtensions": {}
+    "schematicExtensions": []
   },
   "defaults": {
     "styleExtensions": [
@@ -12,48 +16,61 @@
       "css"
     ]
   },
-  "project": {
-    "name": "contizador-venta-inmobiliaria",
-    "architect": {
-      "build": {
-        "builder": "@angular-devkit/build-angular:browser",
-        "options": {
-          "outputPath": "dist/",
-          "index": "src/index.html",
-          "main": "src/main.ts",
-          "polyfills": [
-            "zone.js"
-          ],
-          "favicon": "src/assets/favicon.ico",
-          "styles": [
-            "src/styles.css"
-          ],
-          "scripts": []
-        }
-      },
-      "serve": {
-        "builder": "@angular-devkit/build-angular:devserver",
-        "options": {
-          "browserTarget": "contizador-venta-inmobiliaria:build"
-        }
-      },
-      "extract-i18n": {
-        "builder": "@angular-devkit/build-angular:extract-i18n",
-        "options": {
-          "batch": "ian"
-        }
-      },
-      "test": {
-        "builder": "@angular-devkit/build-angular:karma",
-        "options": {
-          "karmaConfig": "karma.conf.js",
-          "tsConfig": "tsconfig.spec.json"
-        }
-      },
-      "lint": {
-        "builder": "@angular-devkit/build-angular:nglint",
-        "options": {
-          "project": "contizador-venta-inmobiliaria"
+  "schematics": {
+    "@schematics/angular/component": {
+      "standalone": true
+    },
+    "@schematics/angular/directive": {
+      "standalone": true
+    }
+  },
+  "projects": {
+    "contizador-venta-inmobiliaria": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "favicon": "src/assets/favicon.ico",
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:devserver",
+          "options": {
+            "browserTarget": "contizador-venta-inmobiliaria:build"
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "batch": "ian"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "karmaConfig": "karma.conf.js",
+            "tsConfig": "tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:nglint",
+          "options": {
+            "project": "contizador-venta-inmobiliaria",
+            "tsConfig": "tsconfig.app.json"
+          }
         }
       }
     }
