@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out/tspec",
+    "rootDir": "./src",
+    "module": "commonjs",
+    "target": "es2020",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true
+  },
+  "files": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
+}

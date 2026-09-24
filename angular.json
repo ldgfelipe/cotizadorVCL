@@ -19,7 +19,8 @@
   "parser": "@typescript-eslint/parser",
   "prefix": "app",
   "cli": {
-    "schematicExtensions": []
+    "schematicExtensions": [],
+    "analytics": "be875d30-8e20-4688-90b7-6e650b287b26"
   },
   "defaults": {
     "styleExtensions": [
